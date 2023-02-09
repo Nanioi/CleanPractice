@@ -1,35 +1,34 @@
 import Dependencies.applyAndroidX
-import Dependencies.applyGlide
 import Dependencies.applyHilt
 import Dependencies.applyRetrofit2
 import Dependencies.applyTest
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 
 plugins {
-    id ("com.android.application")
+    id ("com.android.library")
     id ("kotlin-android")
-    id ("kotlin-kapt")
-    id ("dagger.hilt.android.plugin")
-
+    id("kotlin-kapt")
 }
 
 android {
-    namespace = "com.nanioi.cleanpracticeapp"
     compileSdk = Dependencies.COMPILE_SDK
+
     buildFeatures {
         dataBinding = true
     }
+
     defaultConfig {
-        applicationId = "com.nanioi.cleanpracticeapp"
         minSdk = Dependencies.MIN_SDK
         targetSdk = Dependencies.TARGET_SDK
-        versionCode = 1
-        versionName = "1.0"
+
+        buildConfigField(String::class.java.canonicalName, "API_KEY", "\"${gradleLocalProperties(rootDir)["apiKey"] as String}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
@@ -41,20 +40,15 @@ android {
 }
 
 dependencies {
+    implementation (project(":domain"))
+
+    testImplementation(Dependencies.Kotlin.COROUTINE_TEST)
+    testImplementation(Dependencies.Kotlin.TEST)
 
     implementation(Dependencies.Google.MATERIAL)
-    implementation("androidx.appcompat:appcompat:1.6.0")
-    implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation(Dependencies.AndroidX.PAGING_RUNTIME)
     applyAndroidX()
     applyTest()
     applyRetrofit2()
     applyHilt()
-    applyGlide()
-}
-kapt {
-    correctErrorTypes = true
-}
-hilt {
-    enableTransformForLocalTests = true
 }
