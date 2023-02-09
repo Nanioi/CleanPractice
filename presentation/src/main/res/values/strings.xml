@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">CleanPracticeApp</string>
+    <string name="firstAttendDate">최초 가입일 : %s</string>
+    <string name="AttendInfo"> 전체 출석 일 수 : %d 중 %d일 출석했습니다. </string>
+    <string name="actInfoPersent"> 현재 진행률 : %d%% 입니다. </string>
+</resources>

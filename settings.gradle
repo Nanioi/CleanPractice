@@ -13,4 +13,8 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "CleanPracticeApp"
-include ':app'
+include(
+        ':presentation',
+        ':domain',
+        ':data',
+)

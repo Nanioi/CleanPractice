@@ -19,7 +19,7 @@ object Dependencies {
 
 //"1.5.21"
     object Kotlin{
-        const val VERSION = "1.7.20"
+        const val VERSION = "1.6.0"
         const val STD_LIB = "org.jetbrains.kotlin:kotlin-stdlib:$VERSION"
         const val TEST = "org.jetbrains.kotlin:kotlin-test-junit:$VERSION"
 
