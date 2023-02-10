@@ -1,5 +1,6 @@
 package com.nanioi.data
 
+import com.nanioi.domain.ProfileMenuWatchTimeData
 import com.nanioi.domain.AttendStatus
 import com.nanioi.domain.repository.LMSRepository
 import kotlinx.coroutines.flow.Flow
@@ -25,5 +26,13 @@ class LMSRepositoryImpl(
         }
         emit(result)
     }
-
+    override suspend fun getMenuWatchTimeGraphData(profileId : String, schDtt: String) : Flow<ProfileMenuWatchTimeData?> = flow{
+        val response = service.getMonthlyActivity(profileId,profileId,schDtt)
+        val result = if(response.isSuccessful){
+            response.body()?.data
+        }else{
+            null
+        }
+        emit(result)
+    }
 }
