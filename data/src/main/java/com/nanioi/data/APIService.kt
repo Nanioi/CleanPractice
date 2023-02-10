@@ -2,6 +2,7 @@ package com.nanioi.data
 
 import com.nanioi.data.entity.LMSData
 import com.nanioi.data.entity.ProfileAttendData
+import com.nanioi.domain.ProfileMenuWatchTimeData
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -26,4 +27,20 @@ interface APIService {
         @Path("prfId") prfId: String,
         @Query("schDtt") schDtt: String
     ): Response<LMSData<ProfileAttendData>>
+
+    /**
+     * 서버 요청 url
+     * {{base_url}}/api/v1/lms/parents-letter/{{PROFILE-ID}}/monthly-activity?schDtt={{schDtt}}
+     */
+
+    /**
+     * 메뉴별 시청시간 그래프 조회
+     * @param schDtt : 검색년월 (yyyyMM)
+     */
+    @GET("api/v1/lms/parents-letter/{prfId}/monthly-activity")
+    suspend fun getMonthlyActivity(
+        @Header("PROFILE-ID") profileId: String,
+        @Path("prfId") prfId: String,
+        @Query("schDtt") schDtt: String
+    ): Response<LMSData<ProfileMenuWatchTimeData>>
 }

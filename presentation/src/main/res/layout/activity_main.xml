@@ -78,18 +78,39 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="30dp"
-            android:text="메뉴별 시청시간 그래프 조회"
+            android:text="시청 시간 Top3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/progress2" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/top3_recyclerview"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title3" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/title4"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="30dp"-->
+<!--            android:layout_marginTop="30dp"-->
+<!--            android:text="시청 시간 Top#"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/top3_recyclerview" />-->
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="30dp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/title4" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

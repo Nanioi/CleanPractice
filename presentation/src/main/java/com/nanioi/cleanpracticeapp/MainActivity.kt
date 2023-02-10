@@ -4,16 +4,16 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.lifecycleScope
 import com.nanioi.cleanpracticeapp.databinding.ActivityMainBinding
+import com.nanioi.cleanpracticeapp.ui.NyAdapter
 import com.nanioi.cleanpracticeapp.ui.NyViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: NyViewModel by viewModels()
+    private val adapter = NyAdapter()
 
     private val binding: ActivityMainBinding by lazy {
         DataBindingUtil.setContentView(this, R.layout.activity_main)
@@ -28,6 +28,16 @@ class MainActivity : AppCompatActivity() {
 
         binding.data = viewModel
         binding.lifecycleOwner = this
+
+        binding.top3Recyclerview.adapter = adapter
         viewModel.getAttendStatus(profileId,schDtt)
+        viewModel.getMenuWatchTimeGraph(profileId,schDtt)
+        observeState()
     }
+    private fun observeState() = viewModel.top3LiveData.observe(this) {
+        it?.let{
+            adapter.setTop3List(it)
+        }
+    }
+
 }

@@ -4,6 +4,7 @@ import com.nanioi.data.APIService
 import com.nanioi.data.LMSRepositoryImpl
 import com.nanioi.domain.repository.LMSRepository
 import com.nanioi.domain.usecase.GetAttendStatusUseCase
+import com.nanioi.domain.usecase.GetMenuWatchTimeGraphUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +29,12 @@ class AppModule {
     fun provideGetAttendStatusUseCase(repository: LMSRepository): GetAttendStatusUseCase {
         return GetAttendStatusUseCase(repository)
     }
+
+    @Provides
+    fun provideGetMenuWatchTimeGraphUseCase(repository: LMSRepository): GetMenuWatchTimeGraphUseCase {
+        return GetMenuWatchTimeGraphUseCase(repository)
+    }
+
 }
 
 
