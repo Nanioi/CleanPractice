@@ -21,8 +21,6 @@ android {
         minSdk = Dependencies.MIN_SDK
         targetSdk = Dependencies.TARGET_SDK
 
-        buildConfigField(String::class.java.canonicalName, "API_KEY", "\"${gradleLocalProperties(rootDir)["apiKey"] as String}\"")
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

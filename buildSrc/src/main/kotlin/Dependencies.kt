@@ -60,12 +60,32 @@ object Dependencies {
         const val CORE = "com.squareup.retrofit2:retrofit:${VERSION}"
         const val MOSHI = "com.squareup.retrofit2:converter-moshi:${VERSION}"
         const val SCALARS = "com.squareup.retrofit2:converter-scalars:${VERSION}"
+        const val GSON = "com.squareup.retrofit2:converter-gson:${VERSION}"
     }
 
     fun DependencyHandlerScope.applyRetrofit2(){
         implementation(Retrofit2.CORE)
         implementation(Retrofit2.MOSHI)
         implementation(Retrofit2.SCALARS)
+        implementation(Retrofit2.GSON)
+    }
+
+    object TikXml{
+        const val VERSION = "0.8.13"
+        const val ANNOTAION = "com.tickaroo.tikxml:annotation:${VERSION}"
+        const val CORE = "com.tickaroo.tikxml:core:${VERSION}"
+        const val CONVERTER = "com.tickaroo.tikxml:retrofit-converter:${VERSION}"
+        const val PROCESSOR = "com.tickaroo.tikxml:processor:${VERSION}"
+    }
+    fun DependencyHandlerScope.applyTikXml(){
+        implementation(TikXml.ANNOTAION)
+        implementation(TikXml.CORE)
+        implementation(TikXml.CONVERTER)
+        implementation(TikXml.PROCESSOR)
+    }
+
+    fun DependencyHandlerScope.applyOkHttp3(){
+        implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
     }
 
 

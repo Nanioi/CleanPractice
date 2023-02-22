@@ -1,4 +1,4 @@
-package com.nanioi.data
+package com.nanioi.data.service
 
 import com.nanioi.data.entity.LMSData
 import com.nanioi.data.entity.ProfileAttendData

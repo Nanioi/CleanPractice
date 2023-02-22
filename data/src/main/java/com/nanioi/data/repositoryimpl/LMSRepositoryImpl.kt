@@ -1,5 +1,6 @@
-package com.nanioi.data
+package com.nanioi.data.repositoryimpl
 
+import com.nanioi.data.service.APIService
 import com.nanioi.domain.ProfileMenuWatchTimeData
 import com.nanioi.domain.AttendStatus
 import com.nanioi.domain.repository.LMSRepository

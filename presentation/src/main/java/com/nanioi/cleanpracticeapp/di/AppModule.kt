@@ -1,7 +1,8 @@
 package com.nanioi.cleanpracticeapp.di
 
-import com.nanioi.data.APIService
-import com.nanioi.data.LMSRepositoryImpl
+import com.nanioi.data.MSARetrofit
+import com.nanioi.data.service.APIService
+import com.nanioi.data.repositoryimpl.LMSRepositoryImpl
 import com.nanioi.domain.repository.LMSRepository
 import com.nanioi.domain.usecase.GetAttendStatusUseCase
 import com.nanioi.domain.usecase.GetMenuWatchTimeGraphUseCase
@@ -16,14 +17,26 @@ import retrofit2.Retrofit
 class AppModule {
 
     @Provides
-    fun provideAPIService(retrofit:Retrofit): APIService {
+    fun provideAPIService(
+        @MSARetrofit retrofit:Retrofit
+    ): APIService {
         return retrofit.create(APIService::class.java)
     }
+
+    //    @Provides
+//    fun provideMIMSService(retrofit:Retrofit): MIMSService {
+//        return retrofit.create(MIMSService::class.java)
+//    }
 
     @Provides
     fun provideLMSRepository(apiService: APIService): LMSRepository {
         return LMSRepositoryImpl(apiService) as LMSRepository
     }
+
+    //    @Provides
+//    fun provideMIMSRepository(apiService: MIMSService): MIMSRepository {
+//        return MIMSRepositoryImpl(apiService) as MIMSRepository
+//    }
 
     @Provides
     fun provideGetAttendStatusUseCase(repository: LMSRepository): GetAttendStatusUseCase {
